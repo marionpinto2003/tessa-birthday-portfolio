@@ -2,15 +2,75 @@
   box-sizing: border-box;
 }
 
-body {
+html,
+body,
+#root {
   margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: white;
 }
 
 button {
   font: inherit;
   cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+button:focus,
+button:focus-visible {
+  outline: none;
 }
 
 img {
   display: block;
+}
+
+.home-strip {
+  height: 100vh;
+  width: 100vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: white;
+  display: flex;
+  align-items: center;
+  padding: 0 70px;
+}
+
+.home-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 80px;
+  width: max-content;
+}
+
+.cover-card {
+  width: 220px;
+  height: 520px;
+  flex: 0 0 auto;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.cover-card:hover {
+  transform: translateY(-8px);
+}
+
+.cover-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+.cover-card-large {
+  width: 240px;
+  height: 560px;
 }

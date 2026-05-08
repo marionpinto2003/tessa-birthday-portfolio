@@ -11,7 +11,7 @@ const years = [
     note: "Baby Tessa. The story starts here.",
     count: 1,
     folder: "/tessa/2000",
-    cover: "/tessa/2000/1.png",
+    cover: "/tessa/2000/1.jpg",
   },
   {
     year: "2015",
@@ -19,7 +19,7 @@ const years = [
     note: "The first proper signs of the artist she was becoming.",
     count: 3,
     folder: "/tessa/2015",
-    cover: "/tessa/2015/1.png",
+    cover: "/tessa/2015/1.jpg",
   },
   {
     year: "2019",
@@ -27,7 +27,7 @@ const years = [
     note: "Paintings, bakes, experiments, and creative chaos.",
     count: 19,
     folder: "/tessa/2019",
-    cover: "/tessa/2019/1.png",
+    cover: "/tessa/2019/1.jpg",
   },
   {
     year: "2020",
@@ -35,7 +35,7 @@ const years = [
     note: "A year full of things made, tried, baked, painted, and remembered.",
     count: 29,
     folder: "/tessa/2020",
-    cover: "/tessa/2020/1.png",
+    cover: "/tessa/2020/1.jpg",
   },
   {
     year: "2021",
@@ -43,7 +43,7 @@ const years = [
     note: "Hard work, responsibility, growth, and working her way up.",
     count: 8,
     folder: "/tessa/2021",
-    cover: "/tessa/2021/1.png",
+    cover: "/tessa/2021/1.jpg",
   },
   {
     year: "2026",
@@ -51,7 +51,7 @@ const years = [
     note: "This is all your work. Now enjoy this treat.",
     count: 9,
     folder: "/tessa/2026",
-    cover: "/tessa/2026/1.png",
+    cover: "/tessa/2026/1.jpg",
     special: true,
   },
 ];
@@ -78,31 +78,21 @@ export default function App() {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <section className="grid min-h-screen grid-cols-1 gap-1 bg-black p-1 sm:grid-cols-2 lg:grid-cols-3">
-        {years.map((item, index) => (
-          <motion.button
-            key={item.year}
-            onClick={() => openYear(item)}
-            className={`group relative min-h-[55vh] overflow-hidden bg-black text-left ${
-              index === 0 || item.special ? "lg:col-span-2" : ""
-            }`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: index * 0.08, duration: 0.5 }}
-          >
-            <img
-              src={item.cover}
-              alt={item.title}
-              className="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-70"
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
-
-            <div className="absolute bottom-4 left-4 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-black opacity-0 shadow-lg transition group-hover:opacity-100">
-              {item.year}
-            </div>
-          </motion.button>
-        ))}
+      <section className="home-strip">
+        <div className="home-row">
+          {years.map((item, index) => (
+            <motion.button
+              key={item.year}
+              onClick={() => openYear(item)}
+              className={`cover-card ${item.year === "2020" || item.year === "2026" ? "cover-card-large" : ""}`}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.07, duration: 0.45 }}
+            >
+              <img src={item.cover} alt={item.title} />
+            </motion.button>
+          ))}
+        </div>
       </section>
 
       <button
