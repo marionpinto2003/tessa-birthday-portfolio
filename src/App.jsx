@@ -84,7 +84,7 @@ export default function App() {
             <motion.button
               key={item.year}
               onClick={() => openYear(item)}
-              className={`cover-card ${item.year === "2020" || item.year === "2026" ? "cover-card-large" : ""}`}
+              className={`cover-card ${item.year === "2026" ? "cover-card-2026" : ""}`}
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.07, duration: 0.45 }}
